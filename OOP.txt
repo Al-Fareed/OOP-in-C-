@@ -1,0 +1,433 @@
+//Author Name:Al-Fareed
+//Date of Creation:14-Dec-2021
+//Registeration Number:210970049
+//Name of Program:Program to compute cube of a number using inline function.
+//-----------------------------------------
+#include<iostream>
+using namespace std;
+int cube(int n)
+{
+        return(n*n*n);
+}
+int main()
+{
+        int num,ans;
+        cout<<"Enter a number:";
+        cin>>num;
+        ans=cube(num);
+        cout<<"The cube of "<<num<<" is:"<<ans<<endl;
+        return 0;
+}
+
+//Author Name:Al-Fareed
+//Date of Creation:14-Dec-2021
+//Registeration Number:210970049
+//Name of Program:Program to compute the inverse of an integerandthe double of the inverse.
+//-----------------------------------------
+#include<iostream>
+using namespace std;
+void inverse(int num)
+{
+        int dub,rem=0,rev=0;
+        while(num!=0)
+        {
+                rem=num%10;
+                num=num/10;
+                rev=rev*10+rem;
+        }
+        cout<<"Reverse is:"<<rev;
+        dub=rev*2;
+        cout<<"\nThe double of the given number is:"<<dub<<endl;
+}
+int main()
+{
+        int num;
+        cout<<"Enter a number:";
+        cin>>num;
+        inverse(num);
+        return 0;
+}
+
+//Author Name:Al-Fareed
+//Date of Creation:14-Dec-2021
+//Registeration Number:210970049
+//Name of Program:Program to swapping two integers, floats, and characters
+//-------------------------------------------------------------------------------
+#include<iostream>
+using namespace std;
+void swap(int a,int b)
+{
+        int temp;
+        temp=a;
+        a=b;
+        b=temp;
+        cout<<"After Interchanging Integer values of a:"<<a<<"b:"<<b<<endl;
+}
+
+void swap(float a,float b)
+{
+        float temp;
+        temp=a;
+        a=b;
+        b=temp;
+        cout<<"After Interchanging floating values of a:"<<a<<"b:"<<b<<endl;
+}
+void swap(char a,char b)
+{
+        char temp;
+        temp=a;
+        a=b;
+        b=temp;
+        cout<<"After Interchanging characters a:"<<a<<"b:"<<b<<endl;
+}
+int main()
+{
+        int n1,n2;
+        float f1,f2;
+        char c1,c2;
+        cout<<"Enter two integers:";
+        cin>>n1>>n2;
+        swap(n1,n2);
+        cout<<"Enter two floating values:";
+        cin>>f1>>f2;
+        swap(f1,f2);
+        cout<<"Enter two character values:";
+        cin>>c1>>c2;
+        swap(c1,c2);
+        return 0;
+}
+
+//Author Name:Al-Fareed
+//Date of Creation:14-Dec-2021
+//Registeration Number:210970049
+//Name of Program:Program to input n number employees data, calculate and display.
+//-----------------------------------------
+#include<iostream>
+using namespace std;
+struct emp
+{
+        char name[50];
+        int empno;
+        float basic,da,it,netsal,gross;
+        void input();
+        void calculate();
+        void display();
+};
+void emp::input()
+{
+
+        cout<<"Enter Employee Name:";
+        cin>>name;
+        cout<<"Enter the Employee Number:";
+        cin>>empno;
+        cout<<"Enter Basic Salary:";
+        cin>>basic;
+}
+void emp::calculate()
+{
+        da=basic*0.12;
+        gross=basic+da;
+        it=gross*0.18;
+        netsal=gross-it;
+}
+
+void emp::display()
+{
+        cout<<"--------------------------------------------------------\n";
+        cout<<"Employee : "<<name<<" Informations are:\n";
+        cout<<"The Employee number is:"<<empno<<endl;
+        cout<<"The SAlary is:"<<basic<<endl;
+        cout<<"The DA is:"<<da<<endl;
+        cout<<"The Gross Salary is:"<<gross<<endl;
+        cout<<"The Tax is:"<<it<<endl;
+        cout<<"The Net Salary is:"<<netsal<<endl;
+}
+int main()
+{
+        int i,n;
+        cout<<"Enter the number of employees:";
+        cin>>n;
+        emp e[n];
+        for(i=1;i<=n;i++)
+        {
+                e[i].input();
+        }
+        for(i=1;i<=n;i++)
+        {
+                e[i].calculate();
+        }
+        for(i=1;i<=n;i++)
+        {
+                e[i].display();
+        }
+        return 0;
+}
+
+
+
+//Author Name:Al-Fareed
+//Date of Creation:14-Dec-2021
+//Registeration Number:210970049
+//Name of Program:Program to implement the solution to change //making problem Change making problem
+//--------------------------------------------
+#include<iostream>
+using namespace std;
+int main()
+{
+    int denom[10]={2000,500,200,100,50,20,10,5,2,1};
+    int cur[10],n[10],bill,amt;
+    int i=0,k=0;
+    cout<<"Enter the total bill:";
+    cin>>bill;
+    cout<<"Enter the amount recieved from the customer:";
+    cin>>amt;
+    int ret_amt=amt-bill;
+    cout<<"The amount to be returned is:"<<ret_amt;
+    while(ret_amt>0)
+    {
+        if(ret_amt/denom[i]>0)
+        {
+            cur[k]=denom[i];
+            n[k]=ret_amt/denom[i];
+            ret_amt=ret_amt%denom[i];
+            k++;
+        }
+        i++;
+    }
+    for(int j=0;j<k;j++)
+    {
+        cout<<"\n"<<cur[j]<<" rupees "<<n[j];
+    }
+    cout<<"\n";
+    return 0;
+}
+
+
+//Author Name:Al-Fareed
+//Date of Creation:14-Dec-2021
+//Registeration Number:210970049
+//Name of the program: Program to determine whether the given //string is palindrome or not.
+//-----------------------------------------------------------
+#include<iostream>
+using namespace std; 
+int palindrome(int size, char str[]);
+
+int main()
+{
+        char str[20];
+        int i=0, flag=1, size=0;
+        cout<<"\nEnter the string: ";
+        cin>>str;
+        while(str[i])
+        {
+                size++;
+                i++;
+        }
+
+        for(i=0;i<size;i++)
+        {
+                if(str[i]>='a' && str[i]<='z')
+                        str[i]=str[i]-32;
+                else
+                        continue;
+}
+
+        flag=palindrome(size, str);
+        if(flag)
+                cout<<"\nThe string is palindrome"<<endl;
+        else
+                cout<<"\nThe string is not a palindrome"<<endl;
+        return 0;
+}
+
+int palindrome(int size, char str[])
+{
+        char rev[size];
+        int j=0, i=0;
+        for(i=size-1;i>=0;i--)
+        {
+                rev[j]=str[i];
+                j++;
+
+        }
+
+        for(i=0;i<size;i++)
+        {
+                if(str[i]==rev[i])
+                {
+                        continue;
+                        return 1;
+                }
+                else
+                {
+                        return 0;
+
+                }
+
+        }
+}
+
+//Author Name:Al-Fareed
+//Date of Creation:14-Dec-2021
+//Registeration Number:210970049
+//Name of Program:Program to compute cube of a number using inline function.
+//-----------------------------------------
+#include<iostream>
+using namespace std;
+int cube(int n)
+{
+        return(n*n*n);
+}
+int main()
+{
+        int num,ans;
+        cout<<"Enter a number:";
+        cin>>num;
+        ans=cube(num);
+        cout<<"The cube of "<<num<<" is:"<<ans<<endl;
+        return 0;
+}
+
+//Author Name:Al-Fareed
+//Date of Creation:14-Dec-2021
+//Registeration Number:210970049
+//Name of Program:Program to compute the inverse of an integerandthe double of the inverse.
+//-----------------------------------------
+#include<iostream>
+using namespace std;
+void inverse(int num)
+{
+        int dub,rem=0,rev=0;
+        while(num!=0)
+        {
+                rem=num%10;
+                num=num/10;
+                rev=rev*10+rem;
+        }
+        cout<<"Reverse is:"<<rev;
+        dub=rev*2;
+        cout<<"\nThe double of the given number is:"<<dub<<endl;
+}
+int main()
+{
+        int num;
+        cout<<"Enter a number:";
+        cin>>num;
+        inverse(num);
+        return 0;
+}
+
+//Author Name:Al-Fareed
+//Date of Creation:14-Dec-2021
+//Registeration Number:210970049
+//Name of Program:Program to swapping two integers, floats, and characters
+//-------------------------------------------------------------------------------
+#include<iostream>
+using namespace std;
+void swap(int a,int b)
+{
+        int temp;
+        temp=a;
+        a=b;
+        b=temp;
+        cout<<"After Interchanging Integer values of a:"<<a<<"b:"<<b<<endl;
+}
+
+void swap(float a,float b)
+{
+        float temp;
+        temp=a;
+        a=b;
+        b=temp;
+        cout<<"After Interchanging floating values of a:"<<a<<"b:"<<b<<endl;
+}
+void swap(char a,char b)
+{
+        char temp;
+        temp=a;
+        a=b;
+        b=temp;
+        cout<<"After Interchanging characters a:"<<a<<"b:"<<b<<endl;
+}
+int main()
+{
+        int n1,n2;
+        float f1,f2;
+        char c1,c2;
+        cout<<"Enter two integers:";
+        cin>>n1>>n2;
+        swap(n1,n2);
+        cout<<"Enter two floating values:";
+        cin>>f1>>f2;
+        swap(f1,f2);
+        cout<<"Enter two character values:";
+        cin>>c1>>c2;
+        swap(c1,c2);
+        return 0;
+}
+
+//Author Name:Al-Fareed
+//Date of Creation:14-Dec-2021
+//Registeration Number:210970049
+//Name of Program:Program to input n number employees data, calculate and display.
+//-----------------------------------------
+#include<iostream>
+using namespace std;
+struct emp
+{
+        char name[50];
+        int empno;
+        float basic,da,it,netsal,gross;
+        void input();
+        void calculate();
+        void display();
+};
+void emp::input()
+{
+
+        cout<<"Enter Employee Name:";
+        cin>>name;
+        cout<<"Enter the Employee Number:";
+        cin>>empno;
+        cout<<"Enter Basic Salary:";
+        cin>>basic;
+}
+void emp::calculate()
+{
+        da=basic*0.12;
+        gross=basic+da;
+        it=gross*0.18;
+        netsal=gross-it;
+}
+
+void emp::display()
+{
+        cout<<"--------------------------------------------------------\n";
+        cout<<"Employee : "<<name<<" Informations are:\n";
+        cout<<"The Employee number is:"<<empno<<endl;
+        cout<<"The SAlary is:"<<basic<<endl;
+        cout<<"The DA is:"<<da<<endl;
+        cout<<"The Gross Salary is:"<<gross<<endl;
+        cout<<"The Tax is:"<<it<<endl;
+        cout<<"The Net Salary is:"<<netsal<<endl;
+}
+int main()
+{
+        int i,n;
+        cout<<"Enter the number of employees:";
+        cin>>n;
+        emp e[n];
+        for(i=1;i<=n;i++)
+        {
+                e[i].input();
+        }
+        for(i=1;i<=n;i++)
+        {
+                e[i].calculate();
+        }
+        for(i=1;i<=n;i++)
+        {
+                e[i].display();
+        }
+        return 0;
+}
